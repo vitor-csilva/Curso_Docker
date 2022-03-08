@@ -1,0 +1,11 @@
+# Instruções para o programa
+nome: "Matheus"
+idade: 30
+
+# Este objeto descreve o projeto
+objeto:
+  versao: 2
+  arquivo: "teste.txt"
+
+versao: 2 
+versao_completa: 3.14
