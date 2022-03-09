@@ -1,5 +1,5 @@
 # Instruções para o programa
-nome: "Matheus"
+nome: "Vitor"
 idade: 30
 
 # Este objeto descreve o projeto
@@ -7,5 +7,38 @@ objeto:
   versao: 2
   arquivo: "teste.txt"
 
+#Ddos numéricos
 versao: 2 
 versao_completa: 3.14
+
+#Strings no YAML
+string_sem_aspas: Texto sem Aspas
+texto: "Este tambem e um testo valido para o YAML"
+
+#Valoresa Nulos
+nulo: ~
+nulo_dois: null
+
+#Booleanos
+verdadeiro: True
+verdadeiro_dois: On
+
+#Listas Arrays
+Lista: [1, 2, 3, 4, 5, 6, 7]
+Lista_dois: 
+  - "teste"
+  - 10
+  - outro teste
+  - True 
+  - On 
+
+#Dicionários : Tipos de dados para objetos ou listas com chaves e valores. 
+obj: {a: 1, b: 2, c: 3, objeto_interno: {a: 1}}
+objeto: 
+  a: 1
+  b: 2
+  objeto_interno:
+    c: 3
+    d: 4
+
+
