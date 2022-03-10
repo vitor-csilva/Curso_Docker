@@ -1,0 +1,29 @@
+version: '3.3' #Define a versão do Docker compose a ser utilizada (Comando do Compose)
+
+services: #Servicos da aplicacao (Comando do Compose)
+
+  db: #Container de MySQL
+    image: mysql:5.7 #FROM mysql: 5.7
+    volumes: #Lista de Volumes
+      - db_data:/var/lib/mysql
+    restart: always #Todas as alterações anteriores ao comando serão automaticamente atualizadas no Projeto
+    environment: #Configuração do Banco de Dados 
+      MYSQL_ROOT_PASSWORD: wordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: vitor
+      MYSQL_PASSWORD: secret
+
+  wordpress: #Configuração de outro serviço, que no caso é o Wordpress
+    depends_on: #Determina outro serviço na qual esse serviço depende para excução, no caso depende do serviço "db" configurado anteriormente.
+      - db
+    image: wordpress:latest #Imagem base a ser utilizada no serviço pegando sempre a última versão. 
+    ports:
+    - "8000:80" #Porta 8000 da máquina e 80 do arquivo de configuração
+    restart: always
+    environment: #Variáveis de ambiente para conectar ao banco de dados MYSQL
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: vitor
+      WORDPRESS_DB_PASSWORD: secret
+      WORDPRESS_DB_NAME: wordpress
+volumes: #Chave de volumes criadas pois é obrigado a declarar todos os volumes da aplicação.
+  db_data: {}
