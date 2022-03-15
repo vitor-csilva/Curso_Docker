@@ -9,6 +9,8 @@ services: #Servicos da aplicacao (Comando do Compose)
     restart: always #Todas as alterações anteriores ao comando serão automaticamente atualizadas no Projeto
     env_file: # Carrega os parâmtros necessários de acesso através do caminh informado.
       - ./config/db.env
+    networks: #Definindo a rede de conexão do container.
+      - backend
       
 
   wordpress: #Configuração de outro serviço, que no caso é o Wordpress
@@ -18,8 +20,13 @@ services: #Servicos da aplicacao (Comando do Compose)
     ports:
     - "8000:80" #Porta 8000 da máquina e 80 do arquivo de configuração
     restart: always
-    env_file:
+    env_file: # Carrega os parâmtros necessários de acesso através do caminh informado.
       - ./config/wp.env
+    networks: #Definindo a rede de conexão do container.
+      - backend
 
 volumes: #Chave de volumes criadas pois é obrigado a declarar todos os volumes da aplicação.
   db_data: {}
+networks: # Declarando a rede no nível hierárquico máximo, onde vamos "dizer" pro Docker compose em qual rede deve se conectar
+  backend:
+    driver: bridge
